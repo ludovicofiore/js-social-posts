@@ -56,8 +56,6 @@ const posts = [
     }
 ];
 
-// creo variabile per bottone like
-const myButton = document.querySelector(".js-like-button");
 
 // creo ciclo per creare elementi
 posts.forEach((element) => {
@@ -102,38 +100,33 @@ posts.forEach((element) => {
     `;
 
 
-    // creo variabile per bottone like
-    const myButton = document.querySelector(".js-like-button");
-
-    // creo click event per likes 
-    myButton.addEventListener("click",
-
-        function() {
-
-            myButton.classList.add("like-button--liked");
-
-            console.log(myButton);
-
-            likes = likes + 1;
-        }
-    );
 });
 
-// // creo variabile per bottone like
-// const myButton = document.querySelector(".js-like-button");
+// creo variabile per bottone like
+const myButton = document.querySelectorAll(".js-like-button");
 
-// // creo click event per likes 
-// myButton.addEventListener("click",
+console.log(myButton);
 
-//     function() {
-//         // aggiungo classe per colore diverso
-//         myButton.classList.add("like-button--liked");
-//         console.log(myButton);
+// creo ciclo per likes
+myButton.forEach((button) => {
 
-//         // incremento numero likes
-//         posts.likes++;
-//     }
-// );
+    // creo click event per likes 
+    button.addEventListener("click",
+
+        function() {
+            // aggiungo classe per colore diverso
+            button.classList.add("like-button--liked");
+            
+
+            // incremento numero likes
+            
+        }
+    );
+
+
+});
+
+
 
 
 
