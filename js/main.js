@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -56,13 +56,15 @@ const posts = [
     }
 ];
 
+// creo variabile per bottone like
+const myButton = document.querySelector(".js-like-button");
 
 // creo ciclo per creare elementi
 posts.forEach((element) => {
 
     // creo variabile per destructuring
-    const {id, content, media, author, likes, created} = element;
-    
+    let {id, content, media, author, likes, created} = element;
+
     // scrivo innerhtml per portare elementi in pagina
     document.getElementById("container").innerHTML += `
 
@@ -98,10 +100,40 @@ posts.forEach((element) => {
         </div>
     
     `;
-}
 
-);
 
+    // creo variabile per bottone like
+    const myButton = document.querySelector(".js-like-button");
+
+    // creo click event per likes 
+    myButton.addEventListener("click",
+
+        function() {
+
+            myButton.classList.add("like-button--liked");
+
+            console.log(myButton);
+
+            likes = likes + 1;
+        }
+    );
+});
+
+// // creo variabile per bottone like
+// const myButton = document.querySelector(".js-like-button");
+
+// // creo click event per likes 
+// myButton.addEventListener("click",
+
+//     function() {
+//         // aggiungo classe per colore diverso
+//         myButton.classList.add("like-button--liked");
+//         console.log(myButton);
+
+//         // incremento numero likes
+//         posts.likes++;
+//     }
+// );
 
 
 
