@@ -57,6 +57,7 @@ const posts = [
 ];
 
 
+
 // creo ciclo per creare elementi
 posts.forEach((element) => {
 
@@ -91,7 +92,7 @@ posts.forEach((element) => {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
+                        Piace a <b id="${id}" class="js-likes-counter">${likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -102,46 +103,51 @@ posts.forEach((element) => {
 
 });
 
+
+
 // creo variabile per bottone like
 const myButton = document.querySelectorAll(".js-like-button");
 
+// creo variabile per like counter
+const counters = document.querySelectorAll(".js-likes-counter");
+
+// creo array per id
+const idArray = [];
+
 console.log(myButton);
 
-// creo ciclo per likes
-myButton.forEach((button) => {
+// creo ciclo per operare su likes
+for (let i = 0; i < myButton.length; i++) {
 
     // creo click event per likes 
-    button.addEventListener("click",
+    myButton[i].addEventListener("click",
 
-        function() {
+        function(evento) {
+
+            // evito che a ogni click la pagina torni all'inizio
+            evento.preventDefault();
+
             // aggiungo classe per colore diverso
-            button.classList.add("like-button--liked");
-            
+            myButton[i].classList.add("like-button--liked");
 
-            // incremento numero likes
-            
+            // ricavo contenuto counter
+            let valueLikes = parseInt(counters[i].innerHTML);
+
+            // incremento valore likes
+            valueLikes++;
+
+            // porto incremento in pagina
+            counters[i].innerHTML = valueLikes;
+
+            // creo variabile per valori id  
+            let idValues = parseInt(counters[i].getAttribute("id"));
+
+            // pusho id nell'array
+            idArray.push(idValues);
+            console.log(idArray);
         }
     );
+};
 
+ 
 
-});
-
-
-
-
-
-
-
-
-// FUNZIONI
-
-// funzione per creare elemento html
-function createElementWClass (tagName, className) {
-
-    // creo elemento
-    const element = document.createElement(tagName);
-    // creo classe
-    element.classList.add(className);
-
-    return element
-}
